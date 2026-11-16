@@ -2,15 +2,16 @@
 
 ## 1. Navegación principal
 
-La V0 tendrá tres destinos persistentes:
+La navegación tendrá cuatro destinos persistentes tras incorporar Motores:
 
 - **Inicio**: acceso rápido al entrenamiento.
 - **Explorar**: habilidades, entrenadores y ejercicios.
+- **Motores**: estímulos breves locales para entrenamiento y escena libre.
 - **Progreso**: historial y distribución de práctica.
 
 Inicio ofrece tres acciones: **Entréname**, **Entrenar habilidad** y
-**Explorar ejercicios**. “Herramientas” se sustituye por “Ejercicios” para
-evitar ambigüedad. El reto periódico queda fuera de V0.
+**Explorar ejercicios**. Motores tiene nombre propio para no convertirse en un
+cajón genérico de herramientas. El reto periódico queda fuera de V0.
 
 ## 2. Flujo "Entréname"
 

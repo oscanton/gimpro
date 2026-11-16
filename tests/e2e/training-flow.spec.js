@@ -46,3 +46,27 @@ test("la página inicial vuelve a cargar sin conexión", async ({ page, context,
   await page.reload();
   await expect(page.getByRole("heading", { name: "¿Entrenamos?" })).toBeVisible();
 });
+
+test("genera motores y ofrece ayuda en un ejercicio compatible", async ({ page }) => {
+  await page.goto("/#/home");
+  await page.getByRole("button", { name: "Motores" }).click();
+  await expect(page.getByRole("heading", { name: "Motores" })).toBeVisible();
+
+  const result = page.locator(".motor-result p").first();
+  const firstText = await result.textContent();
+  await page.getByRole("button", { name: "Otro" }).click();
+  await expect(result).not.toHaveText(firstText);
+
+  await page.getByLabel("Tipo").selectOption("place");
+  await page.getByLabel(/Rareza:/).fill("4");
+  await page.getByRole("button", { name: "Generar" }).click();
+  const results = page.getByRole("region", { name: "Motores generados" });
+  await expect(results.getByText("Lugar", { exact: true })).toBeVisible();
+  await expect(results.getByText("Rareza 4", { exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "Explorar" }).click();
+  const exercise = page.locator("article", { hasText: "Rebote instantáneo" });
+  await exercise.getByRole("button", { name: /Entrenar/ }).click();
+  await expect(page.getByLabel("Motor opcional")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Otro motor" })).toBeVisible();
+});

@@ -44,7 +44,7 @@ V0 debe funcionar sin backend.
 
 Persistencia prevista:
 
-- `localStorage`: preferencias pequeñas y triviales.
+- `localStorage`: preferencias pequeñas e historial acotado de motores.
 - `IndexedDB` mediante `idb`: historial, sesiones y datos con crecimiento.
 
 La base `gimpro` comienza en versión 1. Toda modificación de stores o índices
@@ -68,6 +68,11 @@ mitad de una sesión; se aplica al finalizar o tras aceptación explícita.
 
 La IA no se invoca directamente desde el navegador con claves privadas.
 
+El generador de Motores usa en el MVP un proveedor local en `src/core/motors/`
+con contenido lingüístico en `data/motors/`. Su método asíncrono y contrato de
+salida permiten añadir otro proveedor sin acoplarlo a la UI. La decisión se
+registra en `docs/adr/ADR-004-local-motor-provider.md`.
+
 Cuando llegue V2/V3 se añadirá una capa de backend o función serverless para:
 
 - autenticación del proveedor;
@@ -80,9 +85,9 @@ Cuando llegue V2/V3 se añadirá una capa de backend o función serverless para:
 
 ## 7. Routing
 
-Hash routing ligero con rutas `#/home`, `#/explore`, `#/session/setup`,
-`#/exercise/:id` y `#/progress`. Permite recarga y hosting estático sin reglas
-de reescritura del servidor.
+Hash routing ligero con rutas `#/home`, `#/explore`, `#/motors`,
+`#/session/setup`, `#/exercise/:id` y `#/progress`. Permite recarga y hosting
+estático sin reglas de reescritura del servidor.
 
 ## 8. Tooling y dependencias
 

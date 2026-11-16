@@ -1,4 +1,9 @@
 import { areaLabel, CATALOG_VERSION, exercises, findExercise } from "../core/catalog.js";
+import {
+  AUTOMATIC_MOTOR_TYPES,
+  createLocalMotorProvider,
+  MOTOR_TYPES
+} from "../core/motors/localProvider.js";
 import { buildSession } from "../core/sessionBuilder.js";
 import {
   listSessions,
@@ -7,9 +12,22 @@ import {
   saveTrainingEvent
 } from "../storage/db.js";
 import { loadPreferences, savePreferences } from "../storage/preferences.js";
+import { loadMotorHistory, rememberMotors } from "../storage/motorHistory.js";
 import { currentRoute, navigate, watchRoute } from "./router.js";
 
 const ACTIVE_SESSION_KEY = "gimpro.active-session.v1";
+const MOTOR_TYPE_LABELS = Object.freeze({
+  title: "Título",
+  phrase: "Frase",
+  place: "Lugar",
+  character: "Personaje",
+  situation: "Situación",
+  relationship: "Relación",
+  word: "Palabra",
+  object: "Objeto",
+  style: "Estilo (avanzado)"
+});
+const RARITY_LABELS = Object.freeze(["Realista", "Peculiar", "Inesperado", "Raro", "Surrealista"]);
 
 export class GimproApp {
   /** @param {HTMLElement} root */
@@ -22,6 +40,11 @@ export class GimproApp {
     this.pendingEvent = null;
     this.notice = "";
     this.updateAction = null;
+    this.motorProvider = createLocalMotorProvider();
+    this.motorSettings = { type: "title", rarity: 3, count: 1 };
+    this.motorMode = "surprise";
+    this.toolMotors = [];
+    this.contextualMotors = new Map();
   }
 
   start() {
@@ -64,6 +87,7 @@ export class GimproApp {
   async routeTemplate(route) {
     if (route === "/home") return this.homeTemplate();
     if (route === "/explore") return this.exploreTemplate();
+    if (route === "/motors") return this.motorsTemplate();
     if (route === "/progress") return this.progressTemplate();
     if (route === "/session/setup") return this.setupTemplate();
     if (route === "/evaluation") return this.evaluationTemplate();
@@ -247,7 +271,7 @@ export class GimproApp {
     `;
   }
 
-  exerciseTemplate(exerciseId) {
+  async exerciseTemplate(exerciseId) {
     const exercise = findExercise(exerciseId);
     if (!exercise) return notFoundTemplate();
     const item = this.currentPlanItem(exerciseId);
@@ -255,8 +279,9 @@ export class GimproApp {
       (candidate) => candidate.id === item?.progression_step_id
     ) ?? exercise.progression_steps[0];
 
+    const motor = await this.contextualMotorFor(exercise);
     if (this.run?.exerciseId === exerciseId && ["running", "paused"].includes(this.run.status)) {
-      return runningTemplate(exercise, this.run.remainingSeconds);
+      return runningTemplate(exercise, this.run.remainingSeconds, motor);
     }
 
     const position = this.activeSession
@@ -275,9 +300,48 @@ export class GimproApp {
           <p>${escapeHtml(exercise.focus)}</p>
           <ol>${exercise.instructions.map((instruction) => `<li>${escapeHtml(instruction)}</li>`).join("")}</ol>
         </div>
+        ${motor ? contextualMotorTemplate(motor, exercise.id) : ""}
         <div class="rules"><strong>Reglas esenciales</strong><ul>${exercise.rules.map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}</ul></div>
         <button class="button button--primary button--large" data-action="start-exercise" data-exercise-id="${exercise.id}">Iniciar</button>
         <button class="text-button" data-route="${this.activeSession ? "/session/setup" : "/explore"}">Salir</button>
+      </section>
+    `;
+  }
+
+  async motorsTemplate() {
+    if (this.toolMotors.length === 0) await this.generateToolMotors(true);
+    return `
+      <section class="page-header stack-md">
+        <div class="eyebrow">Herramienta de entrenamiento</div>
+        <h1>Motores</h1>
+        <p>Un punto de partida breve. Tómalo, cámbialo o pide otro.</p>
+      </section>
+      <form id="motor-form" class="motor-controls stack-lg">
+        <label>Tipo
+          <select name="type">
+            ${MOTOR_TYPES.map(
+              (type) => `<option value="${type}" ${this.motorSettings.type === type ? "selected" : ""}>${MOTOR_TYPE_LABELS[type]}</option>`
+            ).join("")}
+          </select>
+        </label>
+        <label for="motor-rarity">Rareza: <output id="motor-rarity-value" for="motor-rarity">${this.motorSettings.rarity} · ${RARITY_LABELS[this.motorSettings.rarity]}</output></label>
+        <input id="motor-rarity" name="rarity" type="range" min="0" max="4" step="1" value="${this.motorSettings.rarity}">
+        <fieldset>
+          <legend>¿Cuántos?</legend>
+          <div class="segmented segmented--two">
+            ${[1, 2].map(
+              (count) => `<label><input type="radio" name="count" value="${count}" ${this.motorSettings.count === count ? "checked" : ""}><span>${count}</span></label>`
+            ).join("")}
+          </div>
+        </fieldset>
+        <div class="motor-actions">
+          <button class="button button--primary" type="submit">Generar</button>
+          <button class="button button--secondary" type="button" data-action="surprise-motors">Sorpréndeme</button>
+        </div>
+      </form>
+      <section class="motor-results stack-lg" aria-live="polite" aria-label="Motores generados">
+        ${this.toolMotors.map(motorResultTemplate).join("")}
+        <button class="button button--secondary" data-action="another-motors">Otro</button>
       </section>
     `;
   }
@@ -368,6 +432,45 @@ export class GimproApp {
     `;
   }
 
+  async generateToolMotors(surprise = false) {
+    const request = surprise
+      ? { types: [...AUTOMATIC_MOTOR_TYPES], count: this.motorSettings.count }
+      : {
+          types: [this.motorSettings.type],
+          rarity: this.motorSettings.rarity,
+          count: this.motorSettings.count
+        };
+    this.motorMode = surprise ? "surprise" : "configured";
+    this.toolMotors = await this.motorProvider.generate({
+      ...request,
+      locale: "es",
+      history: loadMotorHistory()
+    });
+    rememberMotors(this.toolMotors);
+  }
+
+  async contextualMotorFor(exercise) {
+    if (!exercise.motor_policy) return null;
+    if (!this.contextualMotors.has(exercise.id)) {
+      await this.refreshContextualMotor(exercise);
+    }
+    return this.contextualMotors.get(exercise.id) ?? null;
+  }
+
+  async refreshContextualMotor(exercise) {
+    if (!exercise.motor_policy) return;
+    const [min, max] = exercise.motor_policy.rarity;
+    const [motor] = await this.motorProvider.generate({
+      types: exercise.motor_policy.accepted_types,
+      rarity: { min, max },
+      count: 1,
+      locale: "es",
+      history: loadMotorHistory()
+    });
+    this.contextualMotors.set(exercise.id, motor);
+    rememberMotors([motor]);
+  }
+
   bindGlobalActions() {
     this.root.querySelectorAll("[data-route]").forEach((element) => {
       element.addEventListener("click", () => navigate(element.dataset.route));
@@ -396,6 +499,7 @@ export class GimproApp {
   bindRouteActions(route) {
     if (route === "/home") this.bindHome();
     if (route === "/explore") this.bindExplore();
+    if (route === "/motors") this.bindMotors();
     if (route === "/session/setup") this.bindSetup();
     if (route.startsWith("/exercise/")) this.bindExercise();
     if (route === "/evaluation") this.bindEvaluation();
@@ -436,6 +540,38 @@ export class GimproApp {
     this.root.querySelector("#area-filter")?.addEventListener("change", filter);
     this.root.querySelector("#mode-filter")?.addEventListener("change", filter);
     this.bindExerciseCardActions();
+  }
+
+  bindMotors() {
+    const form = this.root.querySelector("#motor-form");
+    const readSettings = () => {
+      const data = new FormData(form);
+      this.motorSettings = {
+        type: String(data.get("type")),
+        rarity: Number(data.get("rarity")),
+        count: Number(data.get("count"))
+      };
+    };
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      readSettings();
+      await this.generateToolMotors(false);
+      this.render();
+    });
+    this.root.querySelector("#motor-rarity")?.addEventListener("input", (event) => {
+      const rarity = Number(event.currentTarget.value);
+      const output = this.root.querySelector("#motor-rarity-value");
+      if (output) output.textContent = `${rarity} · ${RARITY_LABELS[rarity]}`;
+    });
+    this.root.querySelector('[data-action="surprise-motors"]')?.addEventListener("click", async () => {
+      readSettings();
+      await this.generateToolMotors(true);
+      this.render();
+    });
+    this.root.querySelector('[data-action="another-motors"]')?.addEventListener("click", async () => {
+      await this.generateToolMotors(this.motorMode === "surprise");
+      this.render();
+    });
   }
 
   bindExerciseCardActions() {
@@ -493,6 +629,12 @@ export class GimproApp {
     });
     this.root.querySelector('[data-action="pause-timer"]')?.addEventListener("click", () => this.toggleTimer());
     this.root.querySelector('[data-action="finish-exercise"]')?.addEventListener("click", () => this.finishExercise());
+    this.root.querySelector('[data-action="refresh-context-motor"]')?.addEventListener("click", async (event) => {
+      const exercise = findExercise(event.currentTarget.dataset.exerciseId);
+      if (!exercise) return;
+      await this.refreshContextualMotor(exercise);
+      this.render();
+    });
   }
 
   bindEvaluation() {
@@ -690,6 +832,7 @@ function navigationTemplate(route) {
       ${[
         ["/home", "Inicio"],
         ["/explore", "Explorar"],
+        ["/motors", "Motores"],
         ["/progress", "Progreso"]
       ]
         .map(([path, label]) => `<button data-route="${path}" ${route === path ? 'aria-current="page"' : ""}>${label}</button>`)
@@ -728,17 +871,37 @@ function exerciseCards(list) {
     .join("");
 }
 
-function runningTemplate(exercise, remainingSeconds) {
+function runningTemplate(exercise, remainingSeconds, motor) {
   return `
     <section class="running-view">
       <div class="eyebrow">${escapeHtml(exercise.name)}</div>
       <div class="timer" data-timer aria-label="Tiempo restante">${formatTime(remainingSeconds)}</div>
+      ${motor ? contextualMotorTemplate(motor, exercise.id, true) : ""}
       <p class="running-prompt">${escapeHtml(exercise.focus)}</p>
       <div class="running-actions">
         <button class="button button--secondary" data-action="pause-timer">${remainingSeconds > 0 ? "Pausa / continuar" : "Continuar"}</button>
         <button class="text-button" data-action="finish-exercise">Terminar</button>
       </div>
     </section>`;
+}
+
+function motorResultTemplate(motor) {
+  return `
+    <article class="motor-result">
+      <div class="motor-result__meta"><span>${MOTOR_TYPE_LABELS[motor.type]}</span><span>Rareza ${motor.rarity}</span></div>
+      <p>${escapeHtml(motor.text)}</p>
+    </article>`;
+}
+
+function contextualMotorTemplate(motor, exerciseId, compact = false) {
+  return `
+    <aside class="contextual-motor ${compact ? "contextual-motor--compact" : ""}" aria-label="Motor opcional">
+      <div>
+        <span>${MOTOR_TYPE_LABELS[motor.type]}</span>
+        <strong>${escapeHtml(motor.text)}</strong>
+      </div>
+      <button class="text-button" data-action="refresh-context-motor" data-exercise-id="${exerciseId}">Otro motor</button>
+    </aside>`;
 }
 
 function missingSessionTemplate() {

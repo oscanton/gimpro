@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gimpro.local/schema/motor-catalog-v1.json",
+  "title": "Gimpro locale motor catalog",
+  "type": "object",
+  "required": ["catalog_version", "content_version", "locale", "curated", "pieces", "recipes"],
+  "additionalProperties": false,
+  "properties": {
+    "catalog_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "content_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "locale": { "const": "es" },
+    "curated": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/curated" }
+    },
+    "pieces": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "$ref": "#/$defs/piece" }
+      }
+    },
+    "recipes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/recipe" }
+    }
+  },
+  "$defs": {
+    "type": {
+      "enum": ["title", "phrase", "place", "character", "situation", "relationship", "word", "object", "style"]
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "curated": {
+      "type": "object",
+      "required": ["id", "type", "text", "rarity", "tags", "parts"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9.-]+$" },
+        "type": { "$ref": "#/$defs/type" },
+        "text": { "type": "string", "minLength": 1 },
+        "rarity": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "tags": { "$ref": "#/$defs/tags" },
+        "parts": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "weight": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "piece": {
+      "type": "object",
+      "required": ["id", "text", "rarity_min", "rarity_max", "tags"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9.-]+$" },
+        "text": { "type": "string", "minLength": 1 },
+        "rarity_min": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "rarity_max": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "tags": { "$ref": "#/$defs/tags" }
+      }
+    },
+    "recipe": {
+      "type": "object",
+      "required": ["id", "type", "weight", "rarity_min", "rarity_max", "template", "slots", "tags"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9.-]+$" },
+        "type": { "$ref": "#/$defs/type" },
+        "weight": { "type": "number", "exclusiveMinimum": 0 },
+        "rarity_min": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "rarity_max": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "template": { "type": "string", "minLength": 1 },
+        "slots": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
+        "tags": { "$ref": "#/$defs/tags" }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ Regla orientativa: una persona debe poder iniciar entrenamiento en tres interacc
 
 - Inicio
 - Explorar
+- Motores
 - Progreso
 
 ## 3. Home aprobada
@@ -98,7 +99,17 @@ Estilo minimalista deportivo con detalles teatrales: jerarquía tipográfica
 fuerte, superficies limpias, un color de energía y transiciones breves. Se
 evitan decoraciones literales como telones y máscaras si reducen claridad.
 
-## 9. Accesibilidad
+## 9. Motores
+
+La herramienta `Motores` ofrece tipo, rareza y uno o dos resultados sin
+convertirse en un formulario complejo. `Sorpréndeme` genera con el perfil
+creativo por defecto y `Otro` conserva el modo actual.
+
+Los ejercicios compatibles muestran un único motor opcional con `Otro motor`.
+Tipo y rareza proceden del perfil del ejercicio y no añaden decisiones durante
+la práctica.
+
+## 10. Accesibilidad
 
 Desde V0:
 

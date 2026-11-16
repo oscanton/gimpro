@@ -23,8 +23,15 @@
 - sesiones incompletas;
 - datos corruptos o vacíos;
 - navegación atrás.
+- tipos, rareza, contrato y cardinalidad de motores;
+- anti-repetición y fallback de categorías pequeñas;
+- exclusión de estilos en generación automática;
+- herramienta Motores y ayuda contextual en navegador.
 
 ## 3. Pruebas de contenido
+
+`validate:content` valida tanto ejercicios como el catálogo español de motores,
+incluyendo referencias de colecciones y tokens de plantillas.
 
 Cada ejercicio se revisará con una ficha:
 

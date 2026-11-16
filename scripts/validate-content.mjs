@@ -8,14 +8,55 @@ const catalog = JSON.parse(await readFile(new URL("data/exercises.json", root), 
 const schema = JSON.parse(
   await readFile(new URL("data/schema/exercise.schema.json", root), "utf8")
 );
+const motorCatalog = JSON.parse(await readFile(new URL("data/motors/es.json", root), "utf8"));
+const motorSchema = JSON.parse(
+  await readFile(new URL("data/schema/motor-catalog.schema.json", root), "utf8")
+);
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 addFormats(ajv);
 const validate = ajv.compile(schema);
+const validateMotors = ajv.compile(motorSchema);
 const errors = [];
 
 if (!validate(catalog)) {
   errors.push(...(validate.errors ?? []).map((error) => `${error.instancePath || "/"} ${error.message}`));
+}
+
+if (!validateMotors(motorCatalog)) {
+  errors.push(
+    ...(validateMotors.errors ?? []).map(
+      (error) => `/motors${error.instancePath || "/"} ${error.message}`
+    )
+  );
+}
+
+for (const recipe of motorCatalog.recipes) {
+  if (recipe.rarity_min > recipe.rarity_max) {
+    errors.push(`${recipe.id}: rango de rareza invertido`);
+  }
+  for (const [token, collection] of Object.entries(recipe.slots)) {
+    if (!motorCatalog.pieces[collection]) {
+      errors.push(`${recipe.id}: colección desconocida ${collection}`);
+    }
+    if (!recipe.template.includes(`{${token}}`)) {
+      errors.push(`${recipe.id}: el token ${token} no aparece en la plantilla`);
+    }
+  }
+  const placeholders = [...recipe.template.matchAll(/\{([^}]+)\}/g)].map((match) => match[1]);
+  for (const placeholder of placeholders) {
+    if (!recipe.slots[placeholder]) {
+      errors.push(`${recipe.id}: el token ${placeholder} no tiene colección`);
+    }
+  }
+}
+
+for (const [collection, pieces] of Object.entries(motorCatalog.pieces)) {
+  for (const piece of pieces) {
+    if (piece.rarity_min > piece.rarity_max) {
+      errors.push(`${collection}/${piece.id}: rango de rareza invertido`);
+    }
+  }
 }
 
 const knownSkills = new Set([
@@ -46,6 +87,9 @@ for (const exercise of catalog.exercises) {
   if (new Set(stepIds).size !== stepIds.length) {
     errors.push(`${exercise.id}: IDs de progresión duplicados`);
   }
+  if (exercise.motor_policy?.rarity[0] > exercise.motor_policy?.rarity[1]) {
+    errors.push(`${exercise.id}: rango de rareza de motores invertido`);
+  }
 }
 
 for (let number = 1; number <= 10; number += 1) {
@@ -60,4 +104,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Catálogo válido: ${catalog.exercises.length} ejercicios, versión ${catalog.catalog_version}.`);
+console.log(
+  `Catálogos válidos: ${catalog.exercises.length} ejercicios y ` +
+  `${motorCatalog.curated.length} motores curados (${motorCatalog.locale}).`
+);

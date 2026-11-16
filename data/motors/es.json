@@ -1,0 +1,271 @@
+{
+  "catalog_version": "1.0.0",
+  "content_version": "1.0.0",
+  "locale": "es",
+  "curated": [
+    { "id": "title.turno-de-tarde", "type": "title", "text": "El turno de tarde", "rarity": 0, "tags": ["everyday", "family:work"], "parts": ["turno", "tarde"] },
+    { "id": "title.ultima-mudanza", "type": "title", "text": "La última mudanza", "rarity": 0, "tags": ["everyday", "family:home"], "parts": ["mudanza"] },
+    { "id": "title.merienda-azotea", "type": "title", "text": "Merienda en la azotea", "rarity": 1, "tags": ["everyday", "family:food"], "parts": ["merienda", "azotea"] },
+    { "id": "title.huelga-cumpleanos", "type": "title", "text": "Huelga el día de tu cumpleaños", "rarity": 1, "tags": ["social", "family:work"], "parts": ["huelga", "cumpleanos"] },
+    { "id": "title.merienda-apocalipsis", "type": "title", "text": "Merienda antes del apocalipsis", "rarity": 3, "tags": ["pattern:catastrophe-banal", "family:apocalypse"], "parts": ["merienda", "apocalipsis"], "weight": 1.4 },
+    { "id": "title.juicio-final-cinco", "type": "title", "text": "El juicio final empieza a las cinco", "rarity": 3, "tags": ["pattern:catastrophe-banal", "family:apocalypse"], "parts": ["juicio-final", "cinco"] },
+    { "id": "title.vacaciones-satanas", "type": "title", "text": "Vacaciones con Satanás", "rarity": 3, "tags": ["relationship", "family:demon"], "parts": ["vacaciones", "satanas"] },
+    { "id": "title.dia-libre-muerte", "type": "title", "text": "El día libre de la Muerte", "rarity": 4, "tags": ["personification", "family:death", "family:work"], "parts": ["muerte", "dia-libre"] },
+    { "id": "title.inventario-del-vacio", "type": "title", "text": "El inventario anual del vacío", "rarity": 4, "tags": ["bureaucracy", "family:intangible"], "parts": ["inventario", "vacio"] },
+
+    { "id": "phrase.queda-pan", "type": "phrase", "text": "Queda pan para dos días.", "rarity": 0, "tags": ["statement", "everyday", "family:food"], "parts": ["pan"] },
+    { "id": "phrase.no-vuelvo-tarde", "type": "phrase", "text": "Hoy no pienso volver tarde.", "rarity": 0, "tags": ["statement", "everyday"], "parts": ["volver"] },
+    { "id": "phrase.he-hablado-casero", "type": "phrase", "text": "Ya he hablado con el casero.", "rarity": 1, "tags": ["statement", "family:home"], "parts": ["casero"] },
+    { "id": "phrase.otra-vez-llaves", "type": "phrase", "text": "No vuelvas a esconderme las llaves.", "rarity": 1, "tags": ["reproach", "family:home"], "parts": ["llaves"] },
+    { "id": "phrase.no-era-necesario", "type": "phrase", "text": "No era necesario resucitarle.", "rarity": 3, "tags": ["reproach", "family:death"], "parts": ["resucitar"] },
+    { "id": "phrase.seguro-posesiones", "type": "phrase", "text": "El seguro no cubre posesiones demoníacas.", "rarity": 3, "tags": ["bureaucracy", "family:demon"], "parts": ["seguro", "posesion"] },
+    { "id": "phrase.proxima-resurreccion", "type": "phrase", "text": "La próxima resurrección la haces tú.", "rarity": 4, "tags": ["reproach", "family:death"], "parts": ["resurreccion"] },
+    { "id": "phrase.dios-abres-tu", "type": "phrase", "text": "Como vuelva a aparecer Dios, le abres tú.", "rarity": 4, "tags": ["reproach", "family:divine"], "parts": ["dios", "puerta"] },
+
+    { "id": "place.cocina-compartida", "type": "place", "text": "La cocina de un piso compartido", "rarity": 0, "tags": ["concrete", "family:home"], "parts": ["cocina"] },
+    { "id": "place.parada-nocturna", "type": "place", "text": "Una parada de autobús de madrugada", "rarity": 0, "tags": ["concrete", "family:transport"], "parts": ["parada"] },
+    { "id": "place.piscina-vacia", "type": "place", "text": "Una piscina municipal vacía", "rarity": 1, "tags": ["concrete", "family:public"], "parts": ["piscina"] },
+    { "id": "place.trastienda-kiosco", "type": "place", "text": "La trastienda de un quiosco", "rarity": 1, "tags": ["concrete", "family:commerce"], "parts": ["trastienda"] },
+    { "id": "place.lavanderia-fantasmas", "type": "place", "text": "Una lavandería para fantasmas", "rarity": 3, "tags": ["service", "family:ghost"], "parts": ["lavanderia", "fantasmas"] },
+    { "id": "place.recuerdos-confiscados", "type": "place", "text": "Un depósito de recuerdos confiscados", "rarity": 4, "tags": ["institution", "family:memory"], "parts": ["deposito", "recuerdos"] },
+
+    { "id": "character.conserje-nuevo", "type": "character", "text": "La nueva conserje del edificio", "rarity": 0, "tags": ["person", "family:work"], "parts": ["conserje"] },
+    { "id": "character.primo-cocinero", "type": "character", "text": "Tu primo, que acaba de hacerse cocinero", "rarity": 0, "tags": ["person", "family:family"], "parts": ["primo", "cocinero"] },
+    { "id": "character.arbitra-jubilada", "type": "character", "text": "Una árbitra recién jubilada", "rarity": 1, "tags": ["person", "family:work"], "parts": ["arbitra"] },
+    { "id": "character.panadero-insomnio", "type": "character", "text": "Un panadero con insomnio", "rarity": 1, "tags": ["person", "family:work"], "parts": ["panadero"] },
+    { "id": "character.perro-medico", "type": "character", "text": "Un perro convencido de que es médico", "rarity": 3, "tags": ["role-inversion", "family:animal"], "parts": ["perro", "medico"] },
+    { "id": "character.enfermedad-caer-bien", "type": "character", "text": "Una enfermedad que intenta caer bien", "rarity": 4, "tags": ["personification", "family:anatomy"], "parts": ["enfermedad", "amistad"] },
+
+    { "id": "situation.cena-visita", "type": "situation", "text": "Una familia prepara la cena antes de que llegue una visita", "rarity": 0, "tags": ["everyday", "family:family"], "parts": ["familia", "cena"] },
+    { "id": "situation.equipo-cierre", "type": "situation", "text": "Un equipo intenta cerrar el local a tiempo", "rarity": 0, "tags": ["everyday", "family:work"], "parts": ["equipo", "local"] },
+    { "id": "situation.vecinos-ensayo", "type": "situation", "text": "Dos vecinos ensayan una conversación difícil en el ascensor", "rarity": 1, "tags": ["relationship", "family:home"], "parts": ["vecinos", "ascensor"] },
+    { "id": "situation.amigos-foto", "type": "situation", "text": "Un grupo de amigos encuentra una foto que ninguno recuerda", "rarity": 1, "tags": ["relationship", "family:memory"], "parts": ["amigos", "foto"] },
+    { "id": "situation.enfermedad-fugada", "type": "situation", "text": "Un médico comunica que la enfermedad se ha fugado", "rarity": 3, "tags": ["personification", "family:anatomy"], "parts": ["medico", "enfermedad"] },
+    { "id": "situation.amigo-imaginario", "type": "situation", "text": "Un grupo de amigos descubre que uno de ellos lleva años siendo imaginario", "rarity": 4, "tags": ["relationship", "family:impossible"], "parts": ["amigos", "imaginario"] },
+
+    { "id": "relationship.hermanas-mudanza", "type": "relationship", "text": "Dos hermanas que afrontan su última mudanza juntas", "rarity": 0, "tags": ["family", "family:home"], "parts": ["hermanas", "mudanza"] },
+    { "id": "relationship.jefa-exempleado", "type": "relationship", "text": "Una jefa y su antiguo empleado", "rarity": 0, "tags": ["status", "family:work"], "parts": ["jefa", "exempleado"] },
+    { "id": "relationship.amigos-deuda", "type": "relationship", "text": "Dos amigos que nunca hablan de una deuda", "rarity": 1, "tags": ["friendship", "family:money"], "parts": ["amigos", "deuda"] },
+    { "id": "relationship.maestra-alumna", "type": "relationship", "text": "Una maestra y la alumna que la sustituyó", "rarity": 1, "tags": ["status", "family:work"], "parts": ["maestra", "alumna"] },
+    { "id": "relationship.casero-fantasma", "type": "relationship", "text": "Casero y fantasma del anterior inquilino", "rarity": 3, "tags": ["status", "family:ghost", "family:home"], "parts": ["casero", "fantasma"] },
+    { "id": "relationship.casa-prefiere", "type": "relationship", "text": "Casero e inquilino que descubren que la casa prefiere a uno de los dos", "rarity": 4, "tags": ["relationship", "family:home"], "parts": ["casero", "inquilino", "casa"] },
+
+    { "id": "word.dedal", "type": "word", "text": "Dedal", "rarity": 0, "tags": ["concrete", "family:object"], "parts": ["dedal"] },
+    { "id": "word.alcachofa", "type": "word", "text": "Alcachofa", "rarity": 0, "tags": ["concrete", "family:food"], "parts": ["alcachofa"] },
+    { "id": "word.andamio", "type": "word", "text": "Andamio", "rarity": 0, "tags": ["concrete", "family:construction"], "parts": ["andamio"] },
+    { "id": "word.cantimplora", "type": "word", "text": "Cantimplora", "rarity": 1, "tags": ["concrete", "family:object"], "parts": ["cantimplora"] },
+    { "id": "word.tobogan", "type": "word", "text": "Tobogán", "rarity": 1, "tags": ["concrete", "family:public"], "parts": ["tobogan"] },
+    { "id": "word.escafandra", "type": "word", "text": "Escafandra", "rarity": 1, "tags": ["concrete", "family:object"], "parts": ["escafandra"] },
+    { "id": "word.vertebra", "type": "word", "text": "Vértebra", "rarity": 2, "tags": ["concrete", "family:anatomy"], "parts": ["vertebra"] },
+    { "id": "word.montacargas", "type": "word", "text": "Montacargas", "rarity": 2, "tags": ["concrete", "family:industry"], "parts": ["montacargas"] },
+    { "id": "word.badajo", "type": "word", "text": "Badajo", "rarity": 2, "tags": ["concrete", "family:object"], "parts": ["badajo"] },
+    { "id": "word.esfinge", "type": "word", "text": "Esfinge", "rarity": 3, "tags": ["concrete", "family:myth"], "parts": ["esfinge"] },
+    { "id": "word.quimera", "type": "word", "text": "Quimera", "rarity": 3, "tags": ["visual", "family:myth"], "parts": ["quimera"] },
+    { "id": "word.exoesqueleto", "type": "word", "text": "Exoesqueleto", "rarity": 3, "tags": ["concrete", "family:anatomy"], "parts": ["exoesqueleto"] },
+    { "id": "word.ciclope", "type": "word", "text": "Cíclope", "rarity": 4, "tags": ["visual", "family:myth"], "parts": ["ciclope"] },
+    { "id": "word.geiser", "type": "word", "text": "Géiser", "rarity": 4, "tags": ["visual", "family:nature"], "parts": ["geiser"] },
+    { "id": "word.leviatan", "type": "word", "text": "Leviatán", "rarity": 4, "tags": ["visual", "family:myth"], "parts": ["leviatan"] },
+
+    { "id": "object.manojo-llaves", "type": "object", "text": "Un manojo de llaves", "rarity": 0, "tags": ["concrete", "family:home"], "parts": ["llaves"] },
+    { "id": "object.caja-herramientas", "type": "object", "text": "Una caja de herramientas", "rarity": 0, "tags": ["concrete", "family:work"], "parts": ["caja-herramientas"] },
+    { "id": "object.paraguas-roto", "type": "object", "text": "Un paraguas roto", "rarity": 1, "tags": ["concrete", "family:object"], "parts": ["paraguas"] },
+    { "id": "object.maleta-etiquetas", "type": "object", "text": "Una maleta llena de etiquetas antiguas", "rarity": 1, "tags": ["concrete", "family:travel"], "parts": ["maleta"] },
+    { "id": "object.reloj-adelanta", "type": "object", "text": "Un reloj que se adelanta cuando alguien miente", "rarity": 3, "tags": ["will", "family:time"], "parts": ["reloj", "mentira"] },
+    { "id": "object.espejo-retraso", "type": "object", "text": "Un espejo que refleja con un minuto de retraso", "rarity": 4, "tags": ["physics", "family:time"], "parts": ["espejo", "retraso"] },
+
+    { "id": "style.costumbrismo", "type": "style", "text": "Costumbrismo", "rarity": 0, "tags": ["advanced", "genre"], "parts": ["costumbrismo"] },
+    { "id": "style.drama-familiar", "type": "style", "text": "Drama familiar", "rarity": 0, "tags": ["advanced", "genre"], "parts": ["drama"] },
+    { "id": "style.comedia-enredos", "type": "style", "text": "Comedia de enredos", "rarity": 1, "tags": ["advanced", "genre"], "parts": ["comedia"] },
+    { "id": "style.documental", "type": "style", "text": "Documental", "rarity": 1, "tags": ["advanced", "genre"], "parts": ["documental"] },
+    { "id": "style.noir", "type": "style", "text": "Cine negro", "rarity": 2, "tags": ["advanced", "genre"], "parts": ["noir"] },
+    { "id": "style.telenovela", "type": "style", "text": "Telenovela", "rarity": 2, "tags": ["advanced", "genre"], "parts": ["telenovela"] },
+    { "id": "style.realismo-magico", "type": "style", "text": "Realismo mágico", "rarity": 3, "tags": ["advanced", "genre"], "parts": ["realismo-magico"] },
+    { "id": "style.tragedia-clown", "type": "style", "text": "Tragedia clown", "rarity": 3, "tags": ["advanced", "genre"], "parts": ["clown"] },
+    { "id": "style.opera-espacial", "type": "style", "text": "Ópera espacial doméstica", "rarity": 4, "tags": ["advanced", "genre"], "parts": ["opera-espacial"] },
+    { "id": "style.surrealismo-burocratico", "type": "style", "text": "Surrealismo burocrático", "rarity": 4, "tags": ["advanced", "genre"], "parts": ["surrealismo", "burocracia"] }
+  ],
+  "pieces": {
+    "ordinaryEvents": [
+      { "id": "event.cena", "text": "Una cena", "rarity_min": 0, "rarity_max": 1, "tags": ["family:food"] },
+      { "id": "event.reunion", "text": "Una reunión", "rarity_min": 0, "rarity_max": 1, "tags": ["family:work"] },
+      { "id": "event.despedida", "text": "Una despedida", "rarity_min": 0, "rarity_max": 1, "tags": ["family:relationship"] },
+      { "id": "event.mudanza", "text": "Una mudanza", "rarity_min": 0, "rarity_max": 1, "tags": ["family:home"] }
+    ],
+    "ordinaryPlaces": [
+      { "id": "place.portal", "text": "el portal", "rarity_min": 0, "rarity_max": 1, "tags": ["family:home"] },
+      { "id": "place.comedor", "text": "el comedor", "rarity_min": 0, "rarity_max": 1, "tags": ["family:home"] },
+      { "id": "place.aparcamiento", "text": "un aparcamiento", "rarity_min": 0, "rarity_max": 1, "tags": ["family:transport"] },
+      { "id": "place.almacen", "text": "un almacén", "rarity_min": 0, "rarity_max": 1, "tags": ["family:work"] }
+    ],
+    "services": [
+      { "id": "service.lavanderia", "text": "Una lavandería", "rarity_min": 2, "rarity_max": 4, "tags": ["family:service"] },
+      { "id": "service.camping", "text": "Un camping", "rarity_min": 2, "rarity_max": 4, "tags": ["family:travel"] },
+      { "id": "service.gestoria", "text": "Una gestoría", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "service.guarderia", "text": "Una guardería", "rarity_min": 2, "rarity_max": 4, "tags": ["family:care"] },
+      { "id": "service.taller", "text": "Un taller de reparación", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "service.linea-atencion", "text": "Una línea de atención al cliente", "rarity_min": 3, "rarity_max": 4, "tags": ["family:service"] }
+    ],
+    "impossiblePlurals": [
+      { "id": "entity.fantasmas", "text": "fantasmas", "rarity_min": 2, "rarity_max": 3, "tags": ["family:ghost"] },
+      { "id": "entity.dioses-menores", "text": "dioses menores", "rarity_min": 3, "rarity_max": 4, "tags": ["family:divine"] },
+      { "id": "entity.recuerdos-defectuosos", "text": "recuerdos defectuosos", "rarity_min": 3, "rarity_max": 4, "tags": ["family:memory"] },
+      { "id": "entity.maldiciones", "text": "maldiciones domésticas", "rarity_min": 3, "rarity_max": 4, "tags": ["family:magic"] },
+      { "id": "entity.monstruos-jubilados", "text": "monstruos jubilados", "rarity_min": 3, "rarity_max": 4, "tags": ["family:monster"] },
+      { "id": "entity.sombras-perdidas", "text": "sombras perdidas", "rarity_min": 4, "rarity_max": 4, "tags": ["family:intangible"] }
+    ],
+    "institutions": [
+      { "id": "institution.archivo", "text": "El archivo", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "institution.aduana", "text": "La aduana", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "institution.oficina-perdidos", "text": "La oficina de objetos perdidos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:service"] },
+      { "id": "institution.sindicato", "text": "El sindicato", "rarity_min": 3, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "institution.inspeccion", "text": "La inspección municipal", "rarity_min": 3, "rarity_max": 4, "tags": ["family:bureaucracy"] }
+    ],
+    "intangiblePlurals": [
+      { "id": "intangible.promesas", "text": "promesas incumplidas", "rarity_min": 2, "rarity_max": 3, "tags": ["family:relationship"] },
+      { "id": "intangible.suenos", "text": "sueños embargados", "rarity_min": 3, "rarity_max": 4, "tags": ["family:dream"] },
+      { "id": "intangible.silencios", "text": "silencios sospechosos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:intangible"] },
+      { "id": "intangible.casualidades", "text": "casualidades no autorizadas", "rarity_min": 4, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "intangible.miedos", "text": "miedos heredados", "rarity_min": 3, "rarity_max": 4, "tags": ["family:emotion"] }
+    ],
+    "banalActivities": [
+      { "id": "banal.merienda", "text": "La merienda", "rarity_min": 2, "rarity_max": 4, "tags": ["family:food"] },
+      { "id": "banal.inventario", "text": "El inventario", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "banal.cena-vecinos", "text": "La cena de vecinos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "banal.clase-pilates", "text": "La clase de pilates", "rarity_min": 3, "rarity_max": 4, "tags": ["family:hobby"] },
+      { "id": "banal.turno-noche", "text": "El turno de noche", "rarity_min": 3, "rarity_max": 4, "tags": ["family:work"] }
+    ],
+    "catastrophes": [
+      { "id": "catastrophe.apocalipsis", "text": "el apocalipsis", "rarity_min": 2, "rarity_max": 4, "tags": ["family:apocalypse"] },
+      { "id": "catastrophe.gravedad", "text": "la desaparición de la gravedad", "rarity_min": 3, "rarity_max": 4, "tags": ["family:physics"] },
+      { "id": "catastrophe.tiempo", "text": "el último minuto del tiempo", "rarity_min": 4, "rarity_max": 4, "tags": ["family:time"] },
+      { "id": "catastrophe.luna", "text": "la caída de la Luna", "rarity_min": 4, "rarity_max": 4, "tags": ["family:space"] },
+      { "id": "catastrophe.mar", "text": "la llegada del mar", "rarity_min": 3, "rarity_max": 4, "tags": ["family:nature"] }
+    ],
+    "roles": [
+      { "id": "role.casero", "text": "Un casero", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "role.notaria", "text": "Una notaria", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "role.socorrista", "text": "Un socorrista", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "role.dentista", "text": "Una dentista", "rarity_min": 2, "rarity_max": 4, "tags": ["family:anatomy"] },
+      { "id": "role.portera", "text": "La portera de un edificio", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "role.arbitro", "text": "Un árbitro", "rarity_min": 2, "rarity_max": 4, "tags": ["family:sport"] }
+    ],
+    "contradictions": [
+      { "id": "contradiction.teme-puertas", "text": "tiene miedo de las puertas abiertas", "rarity_min": 2, "rarity_max": 3, "tags": ["family:fear"] },
+      { "id": "contradiction.no-reconoce-caras", "text": "ha dejado de reconocer las caras", "rarity_min": 2, "rarity_max": 3, "tags": ["family:identity"] },
+      { "id": "contradiction.oye-objetos", "text": "oye las quejas de los objetos", "rarity_min": 3, "rarity_max": 4, "tags": ["family:object"] },
+      { "id": "contradiction.reparte-suerte", "text": "debe repartir la suerte del barrio", "rarity_min": 3, "rarity_max": 4, "tags": ["family:intangible"] },
+      { "id": "contradiction.no-proyecta-sombra", "text": "ha dejado de proyectar sombra", "rarity_min": 4, "rarity_max": 4, "tags": ["family:physics"] },
+      { "id": "contradiction.envejece-reves", "text": "envejece al revés durante su turno", "rarity_min": 4, "rarity_max": 4, "tags": ["family:time"] }
+    ],
+    "personifiedEntities": [
+      { "id": "entity.muerte", "text": "La Muerte", "rarity_min": 3, "rarity_max": 4, "tags": ["family:death"] },
+      { "id": "entity.enfermedad", "text": "Una enfermedad", "rarity_min": 3, "rarity_max": 4, "tags": ["family:anatomy"] },
+      { "id": "entity.invierno", "text": "El invierno", "rarity_min": 3, "rarity_max": 4, "tags": ["family:nature"] },
+      { "id": "entity.corazon", "text": "Un corazón", "rarity_min": 3, "rarity_max": 4, "tags": ["family:anatomy"] },
+      { "id": "entity.edificio", "text": "Un edificio", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "entity.silencio", "text": "El silencio", "rarity_min": 4, "rarity_max": 4, "tags": ["family:intangible"] }
+    ],
+    "humanNeeds": [
+      { "id": "need.hacer-amigos", "text": "intenta hacer amigos fuera del trabajo", "rarity_min": 3, "rarity_max": 4, "tags": ["family:relationship", "family:work"] },
+      { "id": "need.pide-dia-libre", "text": "quiere pedir su primer día libre", "rarity_min": 3, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "need.impresionar-familia", "text": "necesita impresionar a su familia", "rarity_min": 3, "rarity_max": 4, "tags": ["family:family"] },
+      { "id": "need.busca-piso", "text": "busca un piso que pueda permitirse", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "need.terapia", "text": "acude a terapia por primera vez", "rarity_min": 4, "rarity_max": 4, "tags": ["family:emotion"] }
+    ],
+    "relationshipPairs": [
+      { "id": "pair.hermanas", "text": "Dos hermanas", "rarity_min": 2, "rarity_max": 4, "tags": ["family:family"] },
+      { "id": "pair.jefe-empleado", "text": "Un jefe y su único empleado", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work", "status"] },
+      { "id": "pair.expareja", "text": "Dos personas que fueron pareja", "rarity_min": 2, "rarity_max": 4, "tags": ["family:relationship"] },
+      { "id": "pair.maestro-alumno", "text": "Un maestro y su antiguo alumno", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work", "status"] },
+      { "id": "pair.vecinas", "text": "Dos vecinas de toda la vida", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "pair.rivales", "text": "Dos rivales de la infancia", "rarity_min": 2, "rarity_max": 4, "tags": ["family:relationship"] }
+    ],
+    "relationalAnomalies": [
+      { "id": "anomaly.mismo-recuerdo", "text": "comparten el mismo recuerdo imposible", "rarity_min": 2, "rarity_max": 4, "tags": ["family:memory"] },
+      { "id": "anomaly.cambian-edad", "text": "intercambian la edad cada vez que discuten", "rarity_min": 3, "rarity_max": 4, "tags": ["family:time"] },
+      { "id": "anomaly.casa-elige", "text": "descubren que la casa solo reconoce a uno", "rarity_min": 3, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "anomaly.sueno-compartido", "text": "llevan semanas apareciendo en el mismo sueño", "rarity_min": 3, "rarity_max": 4, "tags": ["family:dream"] },
+      { "id": "anomaly.sombra-comun", "text": "proyectan una única sombra", "rarity_min": 4, "rarity_max": 4, "tags": ["family:physics"] }
+    ],
+    "groupSubjects": [
+      { "id": "group.familia", "text": "Una familia", "rarity_min": 2, "rarity_max": 4, "tags": ["family:family"] },
+      { "id": "group.amigos", "text": "Un grupo de amigos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:relationship"] },
+      { "id": "group.vecindario", "text": "Un bloque de vecinos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "group.clinica", "text": "Una clínica", "rarity_min": 2, "rarity_max": 4, "tags": ["family:anatomy"] },
+      { "id": "group.orquesta", "text": "Una orquesta municipal", "rarity_min": 3, "rarity_max": 4, "tags": ["family:music"] }
+    ],
+    "discoveries": [
+      { "id": "discovery.fin-mundo", "text": "ha provocado accidentalmente el fin del mundo", "rarity_min": 2, "rarity_max": 4, "tags": ["family:apocalypse"] },
+      { "id": "discovery.imaginario", "text": "uno de sus miembros es imaginario", "rarity_min": 3, "rarity_max": 4, "tags": ["family:identity"] },
+      { "id": "discovery.enfermedad-no-sale", "text": "una enfermedad se niega a abandonar al paciente", "rarity_min": 3, "rarity_max": 4, "tags": ["family:anatomy"] },
+      { "id": "discovery.edificio-late", "text": "el edificio tiene pulso", "rarity_min": 3, "rarity_max": 4, "tags": ["family:home", "family:anatomy"] },
+      { "id": "discovery.todos-mismo-sueno", "text": "todos han tenido exactamente el mismo sueño", "rarity_min": 2, "rarity_max": 4, "tags": ["family:dream"] },
+      { "id": "discovery.dia-repite", "text": "el día se repite solo para ellos", "rarity_min": 4, "rarity_max": 4, "tags": ["family:time"] }
+    ],
+    "placeBases": [
+      { "id": "base.supermercado", "text": "Un supermercado", "rarity_min": 2, "rarity_max": 4, "tags": ["family:commerce"] },
+      { "id": "base.ascensor", "text": "Un ascensor", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "base.polideportivo", "text": "Un polideportivo", "rarity_min": 2, "rarity_max": 4, "tags": ["family:sport"] },
+      { "id": "base.tanatorio", "text": "Un tanatorio", "rarity_min": 2, "rarity_max": 4, "tags": ["family:death"] },
+      { "id": "base.ayuntamiento", "text": "Un ayuntamiento", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "base.estacion", "text": "Una estación de servicio", "rarity_min": 2, "rarity_max": 4, "tags": ["family:transport"] }
+    ],
+    "placeAlterations": [
+      { "id": "alteration.nadie-sale", "text": "donde nadie consigue salir por la misma puerta", "rarity_min": 2, "rarity_max": 3, "tags": ["family:space"] },
+      { "id": "alteration.turno-noche", "text": "que solo existe durante el turno de noche", "rarity_min": 3, "rarity_max": 4, "tags": ["family:time"] },
+      { "id": "alteration.objetos-votan", "text": "donde los objetos votan cada decisión", "rarity_min": 3, "rarity_max": 4, "tags": ["family:object"] },
+      { "id": "alteration.gravedad-lateral", "text": "con la gravedad inclinada hacia la salida", "rarity_min": 4, "rarity_max": 4, "tags": ["family:physics"] },
+      { "id": "alteration.recuerdos-pago", "text": "donde se paga con recuerdos", "rarity_min": 3, "rarity_max": 4, "tags": ["family:memory"] }
+    ],
+    "objectBases": [
+      { "id": "object.paraguas", "text": "Un paraguas", "rarity_min": 2, "rarity_max": 4, "tags": ["family:object"] },
+      { "id": "object.telefono", "text": "Un teléfono fijo", "rarity_min": 2, "rarity_max": 4, "tags": ["family:communication"] },
+      { "id": "object.maletin", "text": "Un maletín", "rarity_min": 2, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "object.balanza", "text": "Una balanza", "rarity_min": 2, "rarity_max": 4, "tags": ["family:commerce"] },
+      { "id": "object.campana", "text": "Una campana", "rarity_min": 2, "rarity_max": 4, "tags": ["family:object"] },
+      { "id": "object.nevera", "text": "Una nevera", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] }
+    ],
+    "objectWills": [
+      { "id": "will.escoge-dueno", "text": "que escoge a su dueño", "rarity_min": 2, "rarity_max": 4, "tags": ["family:identity"] },
+      { "id": "will.recuerda", "text": "que recuerda todo lo que ha guardado", "rarity_min": 2, "rarity_max": 4, "tags": ["family:memory"] },
+      { "id": "will.se-niega", "text": "que se niega a funcionar los lunes", "rarity_min": 2, "rarity_max": 3, "tags": ["family:work"] },
+      { "id": "will.miente", "text": "que miente para proteger a alguien", "rarity_min": 3, "rarity_max": 4, "tags": ["family:relationship"] },
+      { "id": "will.guarda-futuro", "text": "que guarda objetos del día siguiente", "rarity_min": 4, "rarity_max": 4, "tags": ["family:time"] }
+    ],
+    "phraseSubjects": [
+      { "id": "subject.seguro", "text": "El seguro", "rarity_min": 2, "rarity_max": 4, "tags": ["family:bureaucracy"] },
+      { "id": "subject.comunidad", "text": "La comunidad de vecinos", "rarity_min": 2, "rarity_max": 4, "tags": ["family:home"] },
+      { "id": "subject.sindicato", "text": "El sindicato", "rarity_min": 3, "rarity_max": 4, "tags": ["family:work"] },
+      { "id": "subject.manual", "text": "El manual de instrucciones", "rarity_min": 3, "rarity_max": 4, "tags": ["family:object"] }
+    ],
+    "phraseAnomalies": [
+      { "id": "phrase-anomaly.resurrecciones", "text": "resurrecciones fuera de horario", "rarity_min": 2, "rarity_max": 4, "tags": ["family:death"] },
+      { "id": "phrase-anomaly.cambios-gravedad", "text": "cambios de gravedad", "rarity_min": 3, "rarity_max": 4, "tags": ["family:physics"] },
+      { "id": "phrase-anomaly.fantasmas", "text": "fantasmas sin contrato", "rarity_min": 2, "rarity_max": 4, "tags": ["family:ghost"] },
+      { "id": "phrase-anomaly.milagros", "text": "milagros de segunda mano", "rarity_min": 3, "rarity_max": 4, "tags": ["family:divine"] },
+      { "id": "phrase-anomaly.sombras", "text": "sombras compartidas", "rarity_min": 4, "rarity_max": 4, "tags": ["family:intangible"] }
+    ]
+  },
+  "recipes": [
+    { "id": "title.event-in-place", "type": "title", "weight": 1, "rarity_min": 0, "rarity_max": 1, "template": "{event} en {place}", "slots": { "event": "ordinaryEvents", "place": "ordinaryPlaces" }, "tags": ["pattern:concrete"] },
+    { "id": "title.service-for-impossible", "type": "title", "weight": 1.4, "rarity_min": 2, "rarity_max": 4, "template": "{service} para {entities}", "slots": { "service": "services", "entities": "impossiblePlurals" }, "tags": ["pattern:service-fantastic"] },
+    { "id": "title.institution-of-intangible", "type": "title", "weight": 1.3, "rarity_min": 2, "rarity_max": 4, "template": "{institution} de {intangibles}", "slots": { "institution": "institutions", "intangibles": "intangiblePlurals" }, "tags": ["pattern:bureaucracy-intangible"] },
+    { "id": "title.banal-before-catastrophe", "type": "title", "weight": 1.4, "rarity_min": 2, "rarity_max": 4, "template": "{banal} antes de {catastrophe}", "slots": { "banal": "banalActivities", "catastrophe": "catastrophes" }, "tags": ["pattern:catastrophe-banal"] },
+
+    { "id": "phrase.subject-does-not-cover", "type": "phrase", "weight": 1.4, "rarity_min": 2, "rarity_max": 4, "template": "{subject} no cubre {anomaly}.", "slots": { "subject": "phraseSubjects", "anomaly": "phraseAnomalies" }, "tags": ["pattern:bureaucracy-fantastic", "statement"] },
+    { "id": "phrase.not-again", "type": "phrase", "weight": 1.1, "rarity_min": 2, "rarity_max": 4, "template": "Otra vez no: {catastrophe}.", "slots": { "catastrophe": "catastrophes" }, "tags": ["pattern:presupposition", "reproach"] },
+
+    { "id": "place.service-for-impossible", "type": "place", "weight": 1.3, "rarity_min": 2, "rarity_max": 4, "template": "{service} para {entities}", "slots": { "service": "services", "entities": "impossiblePlurals" }, "tags": ["pattern:service-fantastic"] },
+    { "id": "place.concrete-altered", "type": "place", "weight": 1.5, "rarity_min": 2, "rarity_max": 4, "template": "{place} {alteration}", "slots": { "place": "placeBases", "alteration": "placeAlterations" }, "tags": ["pattern:concrete-altered"] },
+
+    { "id": "character.role-with-contradiction", "type": "character", "weight": 1.2, "rarity_min": 2, "rarity_max": 4, "template": "{role} que {contradiction}", "slots": { "role": "roles", "contradiction": "contradictions" }, "tags": ["pattern:role-anomaly"] },
+    { "id": "character.personification-with-need", "type": "character", "weight": 1.5, "rarity_min": 2, "rarity_max": 4, "template": "{entity} que {need}", "slots": { "entity": "personifiedEntities", "need": "humanNeeds" }, "tags": ["pattern:personification-need"] },
+
+    { "id": "relationship.previous-with-anomaly", "type": "relationship", "weight": 1.5, "rarity_min": 2, "rarity_max": 4, "template": "{pair} que {anomaly}", "slots": { "pair": "relationshipPairs", "anomaly": "relationalAnomalies" }, "tags": ["pattern:prior-bond-anomaly"] },
+
+    { "id": "situation.group-discovers", "type": "situation", "weight": 1.6, "rarity_min": 2, "rarity_max": 4, "template": "{group} descubre que {discovery}", "slots": { "group": "groupSubjects", "discovery": "discoveries" }, "tags": ["pattern:group-discovery"] },
+    { "id": "situation.banal-during-catastrophe", "type": "situation", "weight": 1.3, "rarity_min": 2, "rarity_max": 4, "template": "{banal} debe continuar durante {catastrophe}", "slots": { "banal": "banalActivities", "catastrophe": "catastrophes" }, "tags": ["pattern:catastrophe-banal"] },
+
+    { "id": "object.with-will", "type": "object", "weight": 1.5, "rarity_min": 2, "rarity_max": 4, "template": "{object} {will}", "slots": { "object": "objectBases", "will": "objectWills" }, "tags": ["pattern:object-with-will"] }
+  ]
+}

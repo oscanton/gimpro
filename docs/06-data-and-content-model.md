@@ -64,8 +64,18 @@ Campos mínimos: `id`, `session_id`, `exercise_id`, `progression_step_id`,
 ### Skill
 Competencia entrenable.
 
-### Stimulus
-Dato aleatorio reutilizable: objeto, lugar, relación, objetivo, emoción, profesión, restricción, etc.
+### Motor
+
+Estímulo breve reutilizable de tipo título, frase, lugar, personaje, situación,
+relación, palabra u objeto. Su salida estable contiene `id`, `type`, `text`,
+`locale`, `rarity`, `source`, `recipeId`, `tags`, `parts` y `contentVersion`.
+
+El catálogo lingüístico español se mantiene en `data/motors/es.json`. Separa
+motores completos curados, piezas semánticas y plantillas específicas del
+idioma. El contrato completo está en `docs/18-motor-generator.md`.
+
+Un ejercicio compatible declara opcionalmente `motor_policy` con tipos
+aceptados, rango de rareza y capacidad de renovar el estímulo.
 
 ## 3. Reglas de modelado
 
@@ -85,9 +95,9 @@ IndexedDB `gimpro`, versión 1:
 - `sessions`, clave `id`, índices `status` y `started_at`;
 - `training_events`, clave `id`, índices `session_id`, `exercise_id` y `started_at`.
 
-`localStorage` conserva únicamente preferencias: modalidad, sonido y última
-duración/foco. El catálogo se distribuye con la aplicación y no se copia a la
-base de usuario.
+`localStorage` conserva preferencias (modalidad, sonido y última duración/foco)
+y un historial acotado a 60 motores para anti-repetición. Los catálogos se
+distribuyen con la aplicación y no se copian a la base de usuario.
 
 ## 5. Autoevaluación
 

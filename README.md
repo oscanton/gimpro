@@ -16,7 +16,8 @@ Aplicación PWA de entrenamiento para improvisación teatral. Su objetivo no es 
 
 ## Estado actual
 
-Fase: **V0 en desarrollo**.
+Base publicada: **v0.1.0**. La rama principal incorpora además el generador
+local-first de **Motores** aprobado después de esa versión.
 
 El paquete de decisiones y los ADR fue aprobado el 15 de noviembre de 2026.
 La primera vertical funcional ya cubre:
@@ -27,6 +28,7 @@ La primera vertical funcional ya cubre:
 - repetición y avance de dificultad;
 - historial y progreso local en IndexedDB;
 - PWA con precache y actualización no disruptiva;
+- generador local de motores con rareza, anti-repetición y ayuda contextual;
 - pruebas unitarias, E2E, offline y accesibilidad.
 
 ## Documentación
@@ -45,6 +47,7 @@ La primera vertical funcional ya cubre:
 - `docs/11-open-decisions.md`
 - `docs/12-session-builder.md`
 - `docs/13-wireframes.md`
+- `docs/18-motor-generator.md`
 - `docs/adr/`
 
 ## Contenido
@@ -53,6 +56,8 @@ La primera vertical funcional ya cubre:
 - `content/exercise-template.md`: contrato funcional de un ejercicio.
 - `data/schema/exercise.schema.json`: contrato JSON Schema ejecutable.
 - `data/exercises.json`: catálogo V0 inicial.
+- `data/motors/es.json`: contenido curado, piezas y plantillas del generador.
+- `data/schema/motor-catalog.schema.json`: contrato del catálogo lingüístico.
 
 ## Desarrollo
 
@@ -106,6 +111,7 @@ Source: GitHub Actions**. La URL prevista es:
 ## Arquitectura
 
 - `src/core/`: dominio y constructor de sesiones.
+- `src/core/motors/`: contrato y proveedor local de motores.
 - `src/ui/`: navegación y vistas.
 - `src/storage/`: IndexedDB y preferencias.
 - `src/pwa/`: registro y Service Worker.

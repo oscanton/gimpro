@@ -8,9 +8,9 @@ El valor principal de V0 es entrenar. Login, backend y sincronización añaden f
 
 ## Decisión
 
-V0 funcionará sin cuenta y almacenará preferencias en `localStorage`, y
-sesiones y eventos en IndexedDB mediante `idb`. El esquema tendrá versión y
-migraciones explícitas.
+V0 funcionará sin cuenta y almacenará preferencias y datos pequeños acotados
+(como el historial reciente de motores) en `localStorage`, y sesiones y eventos
+en IndexedDB mediante `idb`. El esquema tendrá versión y migraciones explícitas.
 
 ## Consecuencias
 
